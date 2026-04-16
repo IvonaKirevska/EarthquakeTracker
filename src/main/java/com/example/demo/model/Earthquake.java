@@ -17,15 +17,20 @@ public class Earthquake {
     private String place;
     private String title;
     private Instant time;
+    private Double latitude;
+    private Double longitude;
+
 
     public Earthquake(){}
 
-    public Earthquake(Double magnitude, String magType, String place, String title, Instant time) {
+    public Earthquake(Double magnitude, String magType, String place, String title, Instant time, Double latitude, Double longitude) {
         this.magnitude = magnitude;
         this.magType = magType;
         this.place = place;
         this.title = title;
         this.time = time;
+        this.latitude=latitude;
+        this.longitude=longitude;
     }
 
     public Long getId() {
@@ -75,4 +80,21 @@ public class Earthquake {
     public void setTime(Instant time) {
         this.time = time;
     }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
 }

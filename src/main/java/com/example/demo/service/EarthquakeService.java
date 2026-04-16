@@ -52,10 +52,14 @@ public class EarthquakeService {
                 String magType = properties.optString("magType", "unknown");
                 String place = properties.getString("place");
                 String title = properties.getString("title");
+                JSONObject geometry = feature.getJSONObject("geometry");
+                JSONArray coordinates = geometry.getJSONArray("coordinates");
+                Double longitude = coordinates.getDouble(0);
+                Double latitude = coordinates.getDouble(1);
                 Instant time = Instant.ofEpochMilli(properties.getLong("time"));
 
 
-                earthquakes.add(new Earthquake(mag, magType, place, title, time));
+                earthquakes.add(new Earthquake(mag, magType, place, title, time, latitude, longitude));
             } catch (Exception e) {
                 System.err.println("Skipping malformed entry: " + e.getMessage());
             }

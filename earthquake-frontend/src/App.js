@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const API_URL = 'http://localhost:8080/api/earthquakes';
 
@@ -118,6 +120,39 @@ function App() {
           )}
           </tbody>
         </table>
+        {earthquakes.length > 0 && (
+            <div style={{ marginTop: '30px' }}>
+              <h2>Earthquake Map</h2>
+              <MapContainer
+                  center={[20, 0]}
+                  zoom={2}
+                  style={{ height: '500px', width: '100%', borderRadius: '10px' }}
+              >
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution="© OpenStreetMap contributors"
+                />
+                {earthquakes.map((eq) =>
+                    eq.latitude && eq.longitude ? (
+                        <CircleMarker
+                            key={eq.id}
+                            center={[eq.latitude, eq.longitude]}
+                            radius={eq.magnitude * 3}
+                            color={eq.magnitude >= 2.0 ? 'red' : 'orange'}
+                            fillOpacity={0.6}
+                        >
+                          <Popup>
+                            <strong>{eq.title}</strong><br />
+                            Magnitude: {eq.magnitude}<br />
+                            Place: {eq.place}<br />
+                            Time: {new Date(eq.time).toLocaleString()}
+                          </Popup>
+                        </CircleMarker>
+                    ) : null
+                )}
+              </MapContainer>
+            </div>
+        )}
       </div>
   );
 }
