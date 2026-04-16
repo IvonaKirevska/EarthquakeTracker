@@ -1,17 +1,17 @@
 Running the application
 
-Backend:
-cd demo - Navigate to backend folder  
-./mvnw spring-boot:run - Run the application
-Backend runs at: http://localhost:8080
+Backend:<br>
+cd demo - Navigate to backend folder<br>  
+./mvnw spring-boot:run - Run the application<br>
+Backend runs at: http://localhost:8080<br>
 
-OR from IntelliJ:
-Open project
-Run main class (@DemoApplication)
-Backend will start on: http://localhost:8080
+OR from IntelliJ:<br>
+Open project<br>
+Run main class (@DemoApplication)<br>
+Backend will start on: http://localhost:8080<br>
 
-Frontend:
-cd earthquake-frontend - Navigate to frontend folder
-npm install - Install dependencies
-npm start - Start the app
+Frontend:<br>
+cd earthquake-frontend - Navigate to frontend folder<br>
+npm install - Install dependencies<br>
+npm start - Start the app<br>
 Frontend runs at: http://localhost:3000
